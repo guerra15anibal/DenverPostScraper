@@ -1,3 +1,9 @@
+var MONGODB_URI =
+  process.env.MONGODB_URI || 'mongodb://localhost/DenverScraper';
+​
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+
+
 var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
