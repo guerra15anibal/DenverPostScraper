@@ -1,9 +1,3 @@
-var MONGODB_URI =
-  process.env.MONGODB_URI || 'mongodb://localhost/DenverScraper';
-​
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
-
-
 var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
@@ -24,8 +18,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/DenverScraper", { useNewUrlParser: true });
-
+var MONGODB_URI =
+process.env.MONGODB_URI || 'mongodb://localhost/DenverScraper';
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 app.get("/scrape", function(req, res) {
   axios.get("http://www.denverpost.com/").then(function(response) {
